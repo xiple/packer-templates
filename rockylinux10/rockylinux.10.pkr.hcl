@@ -20,8 +20,11 @@ source "virtualbox-iso" "vbox-iso" {
   disk_size               = 50000
   guest_os_type           = "RedHat_64"
   headless                = false
-  iso_checksum            = "sha256:5aafc2c86e606428cd7c5802b0d28c220f34c181a57eefff2cc6f65214714499"
-  iso_url                 = "/home/debian/Téléchargements/Rocky-10.1-x86_64-minimal.iso"
+  iso_checksum            = "file:https://download.rockylinux.org/pub/rocky/10/isos/x86_64/CHECKSUM"
+  iso_urls                = [
+    "/data/work/iso/Rocky-10.1-x86_64-minimal.iso",
+    "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.1-x86_64-minimal.iso"
+  ]
   memory                  = 1024
   shutdown_command        = "sudo systemctl poweroff"
   ssh_username            = "vagrant"
