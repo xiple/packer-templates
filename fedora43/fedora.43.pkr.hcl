@@ -25,11 +25,12 @@ source "virtualbox-iso" "vbox-iso" {
     "/data/work/iso/Fedora-Server-netinst-x86_64-43-1.6.iso",
     "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/x86_64/iso/Fedora-Server-netinst-x86_64-43-1.6.iso"
   ]
-  memory                  = 1024
+  # 1024 MB is too small for fedora, end in kernel panic (exit code=0x000007)
+  memory                  = 2048
   shutdown_command        = "sudo systemctl poweroff"
   ssh_username            = "vagrant"
   ssh_password            = "vagrant"
-  ssh_timeout             = "20m"
+  ssh_timeout             = "40m"
   output_filename         = "fedora43-pkr"
   vm_name                 = "fedora43-pkr"
 }
@@ -39,5 +40,6 @@ build {
 
   post-processor "vagrant" {
     output                  = "builds/fedora43.box"
+    compression_level       = 9
   }
 }
