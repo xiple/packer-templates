@@ -30,7 +30,7 @@ source "virtualbox-iso" "vbox-iso" {
   shutdown_command        = "sudo systemctl poweroff"
   ssh_username            = "vagrant"
   ssh_password            = "vagrant"
-  ssh_timeout             = "40m"
+  ssh_timeout             = "1h30m"
   output_filename         = "fedora43-pkr"
   vm_name                 = "fedora43-pkr"
 }
