@@ -81,6 +81,9 @@ systemctl enable systemd-timesyncd.service
 systemctl enable NetworkManager.service
 systemctl enable sshd.service
 
+# Retrieve latest mirror list every week with reflector
+systemctl enable reflector.timer
+
 EOF
 
 /usr/bin/umount --recursive /mnt
