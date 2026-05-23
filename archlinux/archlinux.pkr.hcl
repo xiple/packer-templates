@@ -23,16 +23,10 @@ source "virtualbox-iso" "vbox-iso" {
   boot_wait               = "3s"
   communicator            = "ssh"
   cpus                    = 2
-  disk_size               = 50000
-  # TODO
+  disk_size               = 40000
   guest_os_type           = "ArchLinux_64"
   headless                = false
-  #iso_checksum            = "file:https://download.rockylinux.org/pub/rocky/10/isos/x86_64/CHECKSUM"
   iso_checksum            = "sha256:16502a7c18eed827ecead95c297d26f9f4bd57c4b3e4a8f4e2b88cf60e412d6f"
-  #iso_urls                = [
-  #  "/data/work/iso/Rocky-10.1-x86_64-minimal.iso",
-  #  "https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.1-x86_64-minimal.iso"
-  #]
   iso_urls                = [
     "/data/work/iso/archlinux-2026.01.01-x86_64.iso"
   ]
