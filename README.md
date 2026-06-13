@@ -2,7 +2,9 @@
 
 This project contains Xiple's packer build configuration.
 
-Each packer configuration build a vagrant box by default. Build a VirtualBox archive by removing the vagrant post-processor.
+Each packer configuration builds a vagrant box by default. All boxes in this repository are hosted on [HashiCorp Cloud Platform](https://portal.cloud.hashicorp.com/vagrant/discover/xiple).
+
+Also, you can build locally as a vagrant box or as a VirtualBox archive by removing the vagrant post-processor. See steps below.
 
 Available distributions :
 
