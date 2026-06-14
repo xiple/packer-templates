@@ -23,8 +23,9 @@ source "virtualbox-iso" "vbox-iso" {
   boot_wait               = "3s"
   communicator            = "ssh"
   cpus                    = 2
-  disk_size               = 40000
+  disk_size               = 4096
   guest_os_type           = "ArchLinux_64"
+  guest_additions_mode    = "disable"
   headless                = false
   iso_checksum            = "sha256:16502a7c18eed827ecead95c297d26f9f4bd57c4b3e4a8f4e2b88cf60e412d6f"
   iso_urls                = [
@@ -41,6 +42,18 @@ source "virtualbox-iso" "vbox-iso" {
 
 build {
   sources = ["source.virtualbox-iso.vbox-iso"]
+
+  # install xiple's dotfiles for root user
+  provisioner "shell" {
+    script = "scripts/dotfiles.sh"
+    execute_command = "chmod +x {{ .Path }}; sudo {{ .Path }}"
+  }
+
+  # install xiple's dotfiles for vagrant user
+  provisioner "shell" {
+    script = "scripts/dotfiles.sh"
+    execute_command = "chmod +x {{ .Path }}; {{ .Path }}"
+  }
 
   post-processor "vagrant" {
     output                  = "builds/archlinux.box"

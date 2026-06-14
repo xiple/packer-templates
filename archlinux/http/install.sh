@@ -32,15 +32,17 @@ EOF
 /usr/bin/pacstrap -K /mnt --noconfirm --needed \
     base \
     linux \
-    linux-firmware \
     btrfs-progs \
     sudo \
     networkmanager \
     openssh \
     grub \
     reflector \
-    man-db man-pages \
-    vim
+    vim \
+    git stow
+#    linux-firmware \
+#    man-db man-pages \
+#    git and stow are for xiple's dotfiles installation in the packer provisioning step
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -83,6 +85,9 @@ systemctl enable sshd.service
 
 # Retrieve latest mirror list every week with reflector
 systemctl enable reflector.timer
+
+# Remove package cache (for tiny vagrant box)
+pacman -Scc --noconfirm
 
 EOF
 
